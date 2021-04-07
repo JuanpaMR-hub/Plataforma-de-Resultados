@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'inicio/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'inicio/css/home.css' %}">
+    <title>Inicio</title>
+</head>
+<body>
+    
+<header>
+    <h1>Titulo de la pagina</h1>
+    <p>Un lugar donde se veran resultados.</p>
+</header>
+  
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#" class="right">Link</a>
+  </nav>
+  {% block content %}
+  {% endblock %}
+  <footer>
+    <h2>Footer</h2>
+  </footer>
+</body>
+</html>
