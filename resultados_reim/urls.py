@@ -19,7 +19,8 @@ from pages.views import home_view
 from reim1.views import reim1_view
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('',home_view , name='home'),
     path('reim1/', include("reim1.urls")),
-    path('admin/', admin.site.urls),
+    path('', include("django.contrib.auth.urls")),
 ]
