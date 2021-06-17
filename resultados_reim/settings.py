@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     #own
 
-    'pages',
-    'reim1',
+    'pages'
 ]
 
 MIDDLEWARE = [
@@ -82,10 +81,16 @@ WSGI_APPLICATION = 'resultados_reim.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'prueba',
+        'USER': 'root',
+        'PASSWORD': 'Dbcg4003w!',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
+
 
 
 # Password validation

@@ -1,33 +1,43 @@
-
 {% extends 'base.htm' %}
+{% load static %}
 
-
+{% block links %}
+<link rel="stylesheet" href="{% static 'inicio/css/home.css' %}">
+{% endblock %}
 {% block content %}
 <div class="row">
-    <aside>
-      <div class="fakeimg-user" style="height:150px;"><img src="#" alt="Imagen"></div>
-      <p><strong>Nombre del profesor</strong></p>
+    <!-- <aside>
       <div class="fakeimg" style="height:60px;">Image</div><br>
       <div class="fakeimg" style="height:60px;">Image</div><br>
       <div class="fakeimg" style="height:60px;">Image</div>
-    </aside>
+    </aside> -->
     <main>
-        <article>
-            <h2>REIM 1</h2>
-            <div class="reim_box">
-                <div class="fakeimg" style="height:200px;"><a href="reim1"><img src="#" alt="Imagen del reim"></a></div>
-                <div class="students_number" style="height:200px;">Alumnos en este reim</div>
+        <!-- Para saber cual es el colegio y comenzar a buscar los cursos, pienso en que en el codigo
+        del loop del colegio, tomar el colegio que se mostrará y en el mismo panel se le pasa el dato del id
+        para que en el siguiente loop, que es el de los cursos, tome esa id para filtrar -->
+        <button class="accordion">Colegio 1</button>
+        <div class="panel">
+            <form action="../reims/" method="post" id="systemForm">
+                {% csrf_token %}
+            <div class="btn-group-vertical w-75">
+                <!-- En esta area en vez de poner de manera manual, se tiene que crear un loop for
+                en el cual aparescan todos los cursos relacionados con el profe y con el colegio.
+                Ademas en la parte de value, tendrá que ir algo como curso.id -->
+                <button type="submit" name="system" value="c1" form="systemForm" class="btn-primary btn-lg btn-block">Curso 1</button>
+                <button type="submit" name="system" value="c2" form="systemForm" class="btn-primary btn-lg btn-block">Curso 2</button>
             </div>
-            <br>
-        </article>
-        <article>
-            <h2>REIM 2</h2>
-            <div class="reim_box">
-                <div class="fakeimg" style="height:200px;"><a href="#"><img src="#" alt="Imagen del reim"></a></div>
-                <div class="students_number" style="height:200px;">Alumnos en este reim</div>
-            </div>
-            <br>
-        </article>
+        </form>
+        </div>
+        
+        <button class="accordion">Colegio 2</button>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <button class="accordion">Colegio 3</button>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
     </main>
   </div>
+  <script src="{% static 'inicio/js/acordion.js' %}"></script>
 {% endblock %}

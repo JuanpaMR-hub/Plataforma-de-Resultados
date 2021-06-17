@@ -1,0 +1,48 @@
+{% extends 'base.htm' %}
+{% load static %}
+
+{% block links %}
+<!-- <link rel="stylesheet" href="{% static 'inicio/css/home_reim.css' %}"> -->
+{% endblock %}
+
+{% block content %}
+<main style="padding: 50px;">
+  <h1 style="padding-bottom: 50px;">El curso elegido fue {{system}}</h1>
+  <div class="card-deck">
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+
+      <div class="card-body">
+        <h5 class="card-title">Reim 1</h5>
+        <p class="card-text">Build your City Plus</p>
+        <form action="../reim1/" method="post" id="reim_form">
+          {% csrf_token %}
+          <button type="submit" name="botonreim" value="1" form="reim_form" class="btn btn-primary">Ir a Reim</button>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Reim 2</h5>
+        <p class="card-text">Save the Earth Together</p>
+        <form action="../reim1/" method="post" id="reim_form">
+          {% csrf_token %}
+          <button type="submit" name="botonreim" value="2" form="reim_form" class="btn btn-primary">Ir a Reim</button>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Reim 3</h5>
+        <p class="card-text">Otro Reim</p>
+        <form action="../reim1/" method="post" id="reim_form">
+          {% csrf_token %}
+          <button type="submit" name="botonreim" value="3" form="reim_form" class="btn btn-primary">Ir a Reim</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -22,20 +22,10 @@
     background-color: white;
     padding: 20px;
   }
-  .reim_box{
-    width: 100%;
-    padding: 20px;
-    display: flex;
-  }
   /* Fake image, just for this example */
   .fakeimg {
-    background-color: #aaa;
+    background-color: red;
     width: 100%;
-    padding: 20px;
-  }
-  .students_number{
-    background-color: rgb(240, 172, 145);
-    width: 40%;
     padding: 20px;
   }
   .fakeimg-user {
@@ -44,5 +34,59 @@
     padding: 20px;
     margin-left: 20px;
     border-radius: 80%;
+  }
+
+  .lista_cursos{
+    display: flex;
+    justify-content: space-around;
+
+  }
+  .lista_cursos li{
+    list-style-type: none;
+    flex: 0 1 auto;
+    align-self: auto;
+    width: 200px;
+    border: 4px solid black;
+    padding: 18px 50px;
+    margin: 30px;
+    color: red;;
+  }
+
+
+  .accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+  
+  .active, .accordion:hover {
+    background-color: #ccc;
+  }
+  
+  .accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
+  }
+  
+  .panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
   }
   

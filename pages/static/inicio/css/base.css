@@ -12,10 +12,19 @@
   header {
     padding: 10px;
     text-align: center;
-    background: darkblue;
+    background-color: #004b93;
     color: white;
   }
   
+  #logo{
+    text-align: left;
+    padding : 10px;
+  }
+  #logo img{
+    text-align: left;
+    height: 1px;
+  }
+
   /* Increase the font size of the heading */
   header h1 {
     font-size: 40px;
@@ -42,7 +51,7 @@
   
   
   /* Right-aligned link */
-  nav a.right {
+  nav form.right {
     float: right;
   }
   
@@ -58,7 +67,6 @@
     color: white;
   }
   
-
   /* Footer */
   footer {
     padding: 20px;
