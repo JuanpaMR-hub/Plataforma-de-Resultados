@@ -6,36 +6,44 @@
 {% endblock %}
 {% block content %}
 <div class="row">
-    <!-- <aside>
-      <div class="fakeimg" style="height:60px;">Image</div><br>
-      <div class="fakeimg" style="height:60px;">Image</div><br>
-      <div class="fakeimg" style="height:60px;">Image</div>
-    </aside> -->
     <main>
-        <!-- Para saber cual es el colegio y comenzar a buscar los cursos, pienso en que en el codigo
-        del loop del colegio, tomar el colegio que se mostrará y en el mismo panel se le pasa el dato del id
-        para que en el siguiente loop, que es el de los cursos, tome esa id para filtrar -->
+        <!-- Una vez que el Docente se Autentique con el Login, se obtendrán los colegios asociados al profesor en la Base de Datos. 
+        Estos colegios se mostrarán en esta página con el uso de un for loop -->
         <button class="accordion">Colegio 1</button>
         <div class="panel">
             <form action="../reims/" method="post" id="systemForm">
                 {% csrf_token %}
-            <div class="btn-group-vertical w-75">
+            <div class="btn-group-horizontal w-75">
                 <!-- En esta area en vez de poner de manera manual, se tiene que crear un loop for
-                en el cual aparescan todos los cursos relacionados con el profe y con el colegio.
-                Ademas en la parte de value, tendrá que ir algo como curso.id -->
-                <button type="submit" name="system" value="c1" form="systemForm" class="btn-primary btn-lg btn-block">Curso 1</button>
-                <button type="submit" name="system" value="c2" form="systemForm" class="btn-primary btn-lg btn-block">Curso 2</button>
+                en el cual aparescan todos los cursos relacionados con el profesor y con el colegio.
+                Ademas en la parte de value, tendrá que ir el id del curso para que en la siguiente página se sepa con que curso se está trabajando -->
+                <button type="submit" name="system" value="c1" form="systemForm" class="btn-primary btn-lg ">Curso 1</button>
+                <button type="submit" name="system" value="c2" form="systemForm" class="btn-primary btn-lg ">Curso 2</button>
             </div>
         </form>
         </div>
+
+        <!-- Estos Elementos se crearon para la visualización de Multiples colegios en la página -->
         
         <button class="accordion">Colegio 2</button>
         <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <form action="../reims/" method="post" id="systemForm">
+                {% csrf_token %}
+                <div class="btn-group-horizontal w-75">
+                    <button type="submit" name="system" value="c1" form="systemForm" class="btn-primary btn-lg ">Curso 1</button>
+                    <button type="submit" name="system" value="c2" form="systemForm" class="btn-primary btn-lg ">Curso 2</button>
+                </div>
+            </form>
         </div>
         <button class="accordion">Colegio 3</button>
         <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <form action="../reims/" method="post" id="systemForm">
+                {% csrf_token %}
+                <div class="btn-group-horizontal w-75">
+                    <button type="submit" name="system" value="c1" form="systemForm" class="btn-primary btn-lg ">Curso 1</button>
+                    <button type="submit" name="system" value="c2" form="systemForm" class="btn-primary btn-lg ">Curso 2</button>
+                </div>
+            </form>
         </div>
     </main>
   </div>

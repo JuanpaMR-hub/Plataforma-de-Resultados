@@ -13,6 +13,8 @@
 <body>
     
 <header>
+  <div id="topPart">
+  </div>
   <!-- Logo -->
     <div id="Logo">
       <img src="{% static 'inicio/imagenes/Logo.png' %}" alt="Logo de Ulearnet"> 
@@ -20,18 +22,27 @@
 </header>
   
   <nav>
-    <a href="../home/" class="active">Home</a>
-    <a href="#">Link</a>
-    <a href="#">Link</a>
+    <a href="{% url 'home' %}" class="active">Home</a>
+    <a href="{% url 'ayuda' %}">Ayuda</a>
     <form class="right" action="{% url 'logout' %}" method="post">
       {% csrf_token %}
-      <button type="submit">Logout</a>
+      <button type="submit" class="btn btn-primary btn-lg">Logout</button>
     </form>
   </nav>
   {% block content %}
   {% endblock %}
-  <footer>
-    <h2>Footer</h2>
-  </footer>
+  <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <h5><i class="fa fa-road"></i> <img src="{% static 'inicio/imagenes/logo_ulearnet_footer.png' %}" alt="Logo de Ulearnet"> </h5>
+                <p><strong>Programa de Gestión de la Calidad y Seguimiento de los Aprendizajes</strong></p>
+                <p>Dirección de Extensión y Comunicaciones </p>
+                <p>Facultad de Filosofía y Humanidades</p>
+                <p>Universidad de Chile</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

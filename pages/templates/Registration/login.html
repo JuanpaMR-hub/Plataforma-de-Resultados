@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'inicio/css/login.css' %}">
     <link rel="stylesheet" href="{% static 'inicio/css/base.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Login</title>
 </head>
 <body>
@@ -19,18 +20,17 @@
     </div>
 </header>
 <main>
-    <h1>Login</h1>
-    <div class="formulario">
-        <form method="post" action = "{% url 'login' %}" class="form-group">
-            {% csrf_token %}
-            {{form|crispy}}
-            <button type="submit" class="btn btn-success">Login</button>
-        </form>
+    <div class="contenedor"> 
+        <h1>Accede a la Plataforma</h1>
+        <div class="formulario">
+            <form method="post" action = "{% url 'login' %}" class="form-group">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button type="submit" class="btn btn-success">Login</button>
+            </form>
+        </div>
     </div>
 </main>
-  <footer>
-    <h2>Footer</h2>
-  </footer>
 </body>
 </html>
 

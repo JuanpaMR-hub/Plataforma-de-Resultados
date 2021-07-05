@@ -16,13 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import path,include
-from pages.views import home_view, home_reim_view, login_view, logout_view,reim1_view
+from pages.views import home_view, home_reim_view, login_view, logout_view,actividad_view,ayuda_view,lobby_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/',home_view , name='home'),
     path('reims/',home_reim_view , name='home_reim'),
-    path('reim1/', reim1_view, name="reim1"),
+    path('reim_lobby/', lobby_view , name='lobby'),
+    path('actividad/<int:mi_id>/', actividad_view, name="actividad"),
+    path('ayuda/', ayuda_view, name="ayuda"),
     path('', login_view, name= "login"),
     url(r'^logout/$', logout_view, name= "logout"),
 ]

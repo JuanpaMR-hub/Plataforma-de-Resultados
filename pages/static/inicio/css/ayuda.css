@@ -1,0 +1,11 @@
+.preguntas{
+    display: flex;
+    flex-direction: row;
+}
+
+.row_preguntas{
+    border-style: solid;
+    border-radius: 25px;
+    padding: 30px;
+    margin: 20px;
+}

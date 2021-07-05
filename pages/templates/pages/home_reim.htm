@@ -2,31 +2,40 @@
 {% load static %}
 
 {% block links %}
-<!-- <link rel="stylesheet" href="{% static 'inicio/css/home_reim.css' %}"> -->
+<link rel="stylesheet" href="{% static 'inicio/css/home_reim.css' %}">
 {% endblock %}
+
 
 {% block content %}
 <main style="padding: 50px;">
   <h1 style="padding-bottom: 50px;">El curso elegido fue {{system}}</h1>
   <div class="card-deck">
+    <!-- > Aqui en adelante se deben mostrar con un for loop con los REIMS relacionados al colegio y al docente 
+         > Se pueden traer los datos en la parte de views
+         > De momento están ingresadas de manera bruta, al igual que el "id" de cada una de ellas -->
     <div class="card">
       <img class="card-img-top" src="..." alt="Card image cap">
-
       <div class="card-body">
         <h5 class="card-title">Reim 1</h5>
         <p class="card-text">Build your City Plus</p>
-        <form action="../reim1/" method="post" id="reim_form">
+
+        <!-- Este form entrega la información al siguiente template.
+             Se necesita ingresar el id de cada uno de los reims en value
+             De esta manera la siguiente página sabrá cual Reim es y podrá filtrar las actividades -->
+        <form action="../reim_lobby/" method="post" id="reim_form">
           {% csrf_token %}
           <button type="submit" name="botonreim" value="1" form="reim_form" class="btn btn-primary">Ir a Reim</button>
         </form>
       </div>
     </div>
+
+    <!-- Estas son solo complementarias, para visualizar varios Reims en la página -->
     <div class="card">
       <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Reim 2</h5>
         <p class="card-text">Save the Earth Together</p>
-        <form action="../reim1/" method="post" id="reim_form">
+        <form action="../reim_lobby/" method="post" id="reim_form">
           {% csrf_token %}
           <button type="submit" name="botonreim" value="2" form="reim_form" class="btn btn-primary">Ir a Reim</button>
         </form>
@@ -37,7 +46,7 @@
       <div class="card-body">
         <h5 class="card-title">Reim 3</h5>
         <p class="card-text">Otro Reim</p>
-        <form action="../reim1/" method="post" id="reim_form">
+        <form action="../reim_lobby/" method="post" id="reim_form">
           {% csrf_token %}
           <button type="submit" name="botonreim" value="3" form="reim_form" class="btn btn-primary">Ir a Reim</button>
         </form>

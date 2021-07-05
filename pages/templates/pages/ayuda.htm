@@ -1,0 +1,29 @@
+{% extends 'base.htm' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'inicio/css/ayuda.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="ayuda">
+<h3>¿Qué es esto?</h3>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus similique hic unde corporis ipsum, ut iusto recusandae itaque non autem soluta, animi sit deleniti maiores dolor nobis facere. Fugiat, molestiae.</p>
+<br>
+<h3>¿Como funciona?</h3>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia tempora magni odit possimus nulla vero quod consequatur magnam saepe labore! Aliquid ab molestiae aliquam, sapiente quis illo cumque modi illum!
+</p>
+<br>
+<h3>Preguntas Frecuentes</h3>
+<div class="preguntas">
+    <div class="row_preguntas">
+        <h5>Pregunta 1</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, aliquam vitae ut dolor adipisci distinctio placeat dicta numquam laudantium magnam odit? Odit pariatur dignissimos molestiae id eaque, iure sit perferendis!</p>
+    </div>
+    <div class="row_preguntas">
+        <h5>Pregunta 2</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda reiciendis est esse velit consequuntur? Deleniti asperiores dicta soluta, itaque beatae laudantium, deserunt nam accusamus temporibus sit, quam numquam consectetur necessitatibus!</p>
+    </div>
+</div>
+</div>
+{% endblock %}

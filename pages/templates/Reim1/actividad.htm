@@ -1,0 +1,49 @@
+{% extends 'base.htm' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'Reim1/css/actividad.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Como funciona:
+    > La manera mas sencilla fué que se creara un modelo llamado Actividad, el cual guarda el la id, el nombre y el gráfico de la actividad. De aqui en adelante, solamente se obtuvieron los datos de la base de datos que ofrece Django
+    > Se pueden agregar mas actividades en 127.0.0.1:8000/admin con las siguientes credenciales
+      Usuario   : juanpa
+      Contraseña: juanpa
+      (que creativo xd)
+
+    Que hay que cambiar:
+    > Primero que todo, se deben extraer los datos de la base de datos de Ulearnet, para ello se debe investigar sobre Bases de Datos Multiples en Django
+    > Una vez obtenidos los datos, esta página debe filtrar acorde las actividades del Reim elegido por el Usuario
+
+    Problemas:
+    > No sé como obtener el Dropdown con la elección del Usuario para poder filtrar el gráfico
+    > Los gráficos de Power BI que están hechos con los datos de la BD de Ulearnet, no responden al filtrado por URL, debe haber algo que lo impida como una autenticación de Power BI a la BD
+    > De momento existe una autenticación de Power BI donde se tiene que iniciar sesion cada vez que se necesite ver un gráfico. Se está investigando evitar esto. pareciera que al elegir la opción de "incrustar en la web publica" en Power BI, admite esto
+  -->
+
+    <h1>{{ object.nombre_actividad }} </h1>
+    <main>
+
+
+        <!-- Esta sección es la que actualmente me está complicando, de momento no sé como traer a los alumnos especificos de la actividad -->
+       
+            <label for="alumnos">Filtrar por Alumno: </label>
+            <select name = "dropdown">
+              <option value="RUT_alumno eq 1">Alumno 1</option>
+              <option value="RUT_alumno eq 2">Alumno 2</option>
+              <option value="RUT_alumno eq 3">Alumno 3</option>
+            </select>
+            <br>
+            <input type="submit" value="Buscar">
+          
+
+
+          <div class="contenedor">
+            <iframe src= {{ object.grafico }} frameborder="0" allowFullScreen="true"></iframe>
+          </div>
+    </main>
+{% endblock %}
