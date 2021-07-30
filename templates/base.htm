@@ -22,7 +22,6 @@
 </header>
   
   <nav>
-    <a href="{% url 'home' %}" class="active">Home</a>
     <a href="{% url 'ayuda' %}">Ayuda</a>
     <form class="right" action="{% url 'logout' %}" method="post">
       {% csrf_token %}

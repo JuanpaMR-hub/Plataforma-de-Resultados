@@ -22,9 +22,9 @@
         <!-- Este form entrega la información al siguiente template.
              Se necesita ingresar el id de cada uno de los reims en value
              De esta manera la siguiente página sabrá cual Reim es y podrá filtrar las actividades -->
-        <form action="../reim_lobby/" method="post" id="reim_form">
+        <form action="{% url 'lobby' %}" method="post" id="reim_form">
           {% csrf_token %}
-          <button type="submit" name="botonreim" value="1" form="reim_form" class="btn btn-primary">Ir a Reim</button>
+          <button type="submit" name="botonreim" value="500" form="reim_form" class="btn btn-primary">Ir a Reim</button>
         </form>
       </div>
     </div>
@@ -35,9 +35,9 @@
       <div class="card-body">
         <h5 class="card-title">Reim 2</h5>
         <p class="card-text">Save the Earth Together</p>
-        <form action="../reim_lobby/" method="post" id="reim_form">
+        <form action="{% url 'lobby' %}" method="post" id="reim_form">
           {% csrf_token %}
-          <button type="submit" name="botonreim" value="2" form="reim_form" class="btn btn-primary">Ir a Reim</button>
+          <button type="submit" name="botonreim" value="204" form="reim_form" class="btn btn-primary">Ir a Reim</button>
         </form>
       </div>
     </div>
@@ -46,9 +46,9 @@
       <div class="card-body">
         <h5 class="card-title">Reim 3</h5>
         <p class="card-text">Otro Reim</p>
-        <form action="../reim_lobby/" method="post" id="reim_form">
+        <form action="{% url 'lobby' %}" method="post" id="reim_form">
           {% csrf_token %}
-          <button type="submit" name="botonreim" value="3" form="reim_form" class="btn btn-primary">Ir a Reim</button>
+          <button type="submit" name="botonreim" value="300" form="reim_form" class="btn btn-primary">Ir a Reim</button>
         </form>
       </div>
     </div>

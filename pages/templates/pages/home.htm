@@ -7,45 +7,22 @@
 {% block content %}
 <div class="row">
     <main>
-        <!-- Una vez que el Docente se Autentique con el Login, se obtendrán los colegios asociados al profesor en la Base de Datos. 
-        Estos colegios se mostrarán en esta página con el uso de un for loop -->
-        <button class="accordion">Colegio 1</button>
-        <div class="panel">
-            <form action="../reims/" method="post" id="systemForm">
-                {% csrf_token %}
-            <div class="btn-group-horizontal w-75">
-                <!-- En esta area en vez de poner de manera manual, se tiene que crear un loop for
-                en el cual aparescan todos los cursos relacionados con el profesor y con el colegio.
-                Ademas en la parte de value, tendrá que ir el id del curso para que en la siguiente página se sepa con que curso se está trabajando -->
-                <button type="submit" name="system" value="c1" form="systemForm" class="btn-primary btn-lg ">Curso 1</button>
-                <button type="submit" name="system" value="c2" form="systemForm" class="btn-primary btn-lg ">Curso 2</button>
+        <p>Bienvenido {{user.username}}</p>
+        <p>Usted posee una id de {{user.ulearnet.id_ulearnet}}</p>
+        {% for k,v in colegio.items %}
+            <button class="accordion">{{k}}</button>
+            <div class="panel">
+                <form action="{% url 'home_reim' %}" method="post" id="systemForm">
+                    {% csrf_token %}
+                <div class="btn-group-horizontal w-75">
+                    {% for cursos in v %}
+                    <p>{{v}}</p>
+                    <p>{{cursos}}</p>
+                    <button type="submit" name="system" value= {{cursos}} form="systemForm" class="btn-primary btn-lg ">{{ cursos.0 |add:" " |add:cursos.1 }}</button>
+                    {% endfor %}
+                </div>
+                </form>
             </div>
-        </form>
-        </div>
-
-        <!-- Estos Elementos se crearon para la visualización de Multiples colegios en la página -->
-        
-        <button class="accordion">Colegio 2</button>
-        <div class="panel">
-            <form action="../reims/" method="post" id="systemForm">
-                {% csrf_token %}
-                <div class="btn-group-horizontal w-75">
-                    <button type="submit" name="system" value="c1" form="systemForm" class="btn-primary btn-lg ">Curso 1</button>
-                    <button type="submit" name="system" value="c2" form="systemForm" class="btn-primary btn-lg ">Curso 2</button>
-                </div>
-            </form>
-        </div>
-        <button class="accordion">Colegio 3</button>
-        <div class="panel">
-            <form action="../reims/" method="post" id="systemForm">
-                {% csrf_token %}
-                <div class="btn-group-horizontal w-75">
-                    <button type="submit" name="system" value="c1" form="systemForm" class="btn-primary btn-lg ">Curso 1</button>
-                    <button type="submit" name="system" value="c2" form="systemForm" class="btn-primary btn-lg ">Curso 2</button>
-                </div>
-            </form>
-        </div>
-    </main>
-  </div>
+        {% endfor %}
   <script src="{% static 'inicio/js/acordion.js' %}"></script>
 {% endblock %}

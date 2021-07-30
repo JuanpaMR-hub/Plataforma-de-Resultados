@@ -8,62 +8,27 @@
 
 {% block content %}
 
-<h1>El Reim escogido, tiene ID = {{ reim_escogido }}</h1>
+<h1>{{ reim_escogido.nombre }}</h1>
 
 <div class="container-fluid">
     <!-- Al igual que el Template anterior, se necesita crear un for loop que traiga todas las actividades
         relacionadas con el REIM -->
-    <div class="row">
-        <div class="col-12 mt-3">
-            <div class="card">
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <img class="" src="http://via.placeholder.com/300x180" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Actividad 1</h4>
-                        <p class="card-text">Esta es la actividad 1, aqui tendría que ir una descripción hablandonos sobre la actividad y cuales son sus objetivos de aprendizajes</p>
-                        <a href="../actividad/1"><button class="btn btn-primary">Ir a la Actividad</button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<!-- Estas son solamente para visualizar varias actividades en la página -->
-
-    <div class="row">
-        <div class="col-12 mt-3">
-            <div class="card">
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <img class="" src="http://via.placeholder.com/300x180" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Actividad 2</h4>
-                        <p class="card-text">Esta es la actividad 2, aqui tendría que ir una descripción hablandonos sobre la actividad y cuales son sus objetivos de aprendizajes</p>
-                        <a href="../actividad/2"><button class="btn btn-primary">Ir a la Actividad</button></a>
+    {% for actividades in actividad %}
+        <div class="row">
+            <div class="col-12 mt-3">
+                <div class="card">
+                    <div class="card-horizontal">
+                        <div class="img-square-wrapper">
+                            <img class="" src="http://via.placeholder.com/300x180" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Actividad {{actividades.nombre}}</h4>
+                            <p class="card-text">Esta es la actividad {{actividades.nombre}}, aqui tendría que ir una descripción hablandonos sobre la actividad y cuales son sus objetivos de aprendizajes</p>
+                            <a href="../actividad/{{actividades.id}}"><button class="btn btn-primary">Ir a la Actividad</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12 mt-3">
-            <div class="card">
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <img class="" src="http://via.placeholder.com/300x180" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Actividad 3</h4>
-                        <p class="card-text">Esta es la actividad 3, aqui tendría que ir una descripción hablandonos sobre la actividad y cuales son sus objetivos de aprendizajes</p>
-                        <a href="../actividad/1"><button class="btn btn-primary">Ir a la Actividad</button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    {% endfor %}
 {% endblock %}

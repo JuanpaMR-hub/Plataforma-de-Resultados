@@ -80,14 +80,14 @@ WSGI_APPLICATION = 'resultados_reim.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default':{
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prueba',
+        'NAME': 'prototipo',
         'USER': 'root',
         'PASSWORD': 'Dbcg4003w!',
         'HOST': 'localhost',
         'PORT': '3306',
-    }
+    },
 }
 
 
@@ -132,3 +132,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
+
