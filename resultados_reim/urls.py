@@ -20,11 +20,11 @@ from pages.views import home_view, home_reim_view, login_view, logout_view,activ
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',home_view , name='home'),
-    path('reims/',home_reim_view , name='home_reim'),
-    path('reim_lobby/', lobby_view , name='lobby'),
-    path('actividad/<int:mi_id>/', actividad_view, name="actividad"),
+    path('',home_view , name='home'),
+    path('reims/<fecha>/<usuario_id>/<id_colegio>/<id_nivel>/<id_letra>',home_reim_view , name='home_reim'),
+    path('reim_lobby/<fecha>/<reim_id>/<id_colegio>/<id_nivel>/<id_letra>', lobby_view , name='lobby'),
+    path('actividad/<fecha>/<actividad_id>/<id_colegio>/<id_nivel>/<id_letra>', actividad_view, name="actividad"),
     path('ayuda/', ayuda_view, name="ayuda"),
-    path('', login_view, name= "login"),
+    path('login/', login_view, name= "login"),
     url(r'^logout/$', logout_view, name= "logout"),
 ]

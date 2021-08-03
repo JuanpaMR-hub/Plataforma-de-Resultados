@@ -82,10 +82,13 @@ WSGI_APPLICATION = 'resultados_reim.wsgi.application'
 DATABASES = {
     'default':{
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prototipo',
-        'USER': 'root',
-        'PASSWORD': 'Dbcg4003w!',
-        'HOST': 'localhost',
+        'NAME': 'ulearnet_reim_pilotaje',
+        # 'OPTIONS':{
+        #     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        # },
+        'USER': 'reim_ulearnet',
+        'PASSWORD': 'py^I9ie0zX%Q',
+        'HOST': 'ulearnet-db.cmfamk37bb89.sa-east-1.rds.amazonaws.com',
         'PORT': '3306',
     },
 }
@@ -133,3 +136,6 @@ STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+LOGIN_URL = "/login/"

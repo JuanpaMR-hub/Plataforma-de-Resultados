@@ -7,22 +7,20 @@
 {% block content %}
 <div class="row">
     <main>
-        <p>Bienvenido {{user.username}}</p>
-        <p>Usted posee una id de {{user.ulearnet.id_ulearnet}}</p>
-        {% for k,v in colegio.items %}
-            <button class="accordion">{{k}}</button>
+        <h1>Hola {{usuario.username}}!</h1>
+        <h4>Mis Colegios</h4>
+        {% for nombre,colegio in colegios.items %}
+            <button class="accordion">{{nombre}}</button>
             <div class="panel">
-                <form action="{% url 'home_reim' %}" method="post" id="systemForm">
-                    {% csrf_token %}
-                <div class="btn-group-horizontal w-75">
-                    {% for cursos in v %}
-                    <p>{{v}}</p>
-                    <p>{{cursos}}</p>
-                    <button type="submit" name="system" value= {{cursos}} form="systemForm" class="btn-primary btn-lg ">{{ cursos.0 |add:" " |add:cursos.1 }}</button>
-                    {% endfor %}
-                </div>
-                </form>
+                    <div class="btn-group-horizontal w-75">
+                        {% for curso in colegio.values  %}
+                            <a class="btn btn-primary btn-lg" href="../reims/{{curso.fecha}}/{{usuario.id}}/{{curso.colegio.1}}/{{curso.nivel.1}}/{{curso.letra.1}}">{{curso.nivel.0|add:" "|add:curso.letra.0}}</a>
+                            
+                        {% endfor %}
+                    </div>
             </div>
         {% endfor %}
+        </main>
+</div>
   <script src="{% static 'inicio/js/acordion.js' %}"></script>
 {% endblock %}

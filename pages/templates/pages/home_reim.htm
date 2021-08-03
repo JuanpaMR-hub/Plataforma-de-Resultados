@@ -8,50 +8,24 @@
 
 {% block content %}
 <main style="padding: 50px;">
-  <h1 style="padding-bottom: 50px;">El curso elegido fue {{system}}</h1>
+  <h1 style="padding-bottom: 50px;">{{nombre_curso}}</h1>
   <div class="card-deck">
-    <!-- > Aqui en adelante se deben mostrar con un for loop con los REIMS relacionados al colegio y al docente 
-         > Se pueden traer los datos en la parte de views
-         > De momento están ingresadas de manera bruta, al igual que el "id" de cada una de ellas -->
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Reim 1</h5>
-        <p class="card-text">Build your City Plus</p>
-
-        <!-- Este form entrega la información al siguiente template.
-             Se necesita ingresar el id de cada uno de los reims en value
-             De esta manera la siguiente página sabrá cual Reim es y podrá filtrar las actividades -->
-        <form action="{% url 'lobby' %}" method="post" id="reim_form">
-          {% csrf_token %}
-          <button type="submit" name="botonreim" value="500" form="reim_form" class="btn btn-primary">Ir a Reim</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Estas son solo complementarias, para visualizar varios Reims en la página -->
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Reim 2</h5>
-        <p class="card-text">Save the Earth Together</p>
-        <form action="{% url 'lobby' %}" method="post" id="reim_form">
-          {% csrf_token %}
-          <button type="submit" name="botonreim" value="204" form="reim_form" class="btn btn-primary">Ir a Reim</button>
-        </form>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Reim 3</h5>
-        <p class="card-text">Otro Reim</p>
-        <form action="{% url 'lobby' %}" method="post" id="reim_form">
-          {% csrf_token %}
-          <button type="submit" name="botonreim" value="300" form="reim_form" class="btn btn-primary">Ir a Reim</button>
-        </form>
-      </div>
-    </div>
+    {% for reims in Reim %}
+      <!-- > Aqui en adelante se deben mostrar con un for loop con los REIMS relacionados al colegio y al docente 
+          > Se pueden traer los datos en la parte de views
+          > De momento están ingresadas de manera bruta, al igual que el "id" de cada una de ellas -->
+          <div class="card">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{reims.nombre}}</h5>
+              <p class="card-text">{{reims.descripcion_educativa}}</p>
+              <!-- Este form entrega la información al siguiente template.
+                  Se necesita ingresar el id de cada uno de los reims en value
+                  De esta manera la siguiente página sabrá cual Reim es y podrá filtrar las actividades -->
+                  <a class="btn-primary btn-lg" href="../../../../../reim_lobby/{{curso.fecha}}/{{reims.id}}/{{curso.colegio}}/{{curso.nivel}}/{{curso.letra}}">Ir a Reim</a>            
+                </div>
+          </div>
+    {% endfor %}
   </div>
 </main>
 {% endblock %}
