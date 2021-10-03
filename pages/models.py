@@ -396,6 +396,14 @@ class Forma(models.Model):
         db_table = 'forma'
 
 
+class Graficoxactividad(models.Model):
+    id_actividad = models.OneToOneField(Actividad, models.DO_NOTHING, db_column='id_actividad', primary_key=True)
+    embedurl = models.CharField(db_column='embedUrl', max_length=200)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'graficoxactividad'
+
 class Imagen(models.Model):
     idimagen = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=45)

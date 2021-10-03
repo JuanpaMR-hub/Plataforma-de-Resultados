@@ -1,20 +1,26 @@
+from configparser import ConfigParser
+import json
 from django.contrib.auth.forms import AuthenticationForm
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Usuario, Pertenece, Colegio, Nivel, Letra, Actividadxreim, Reim, Actividad, AsignaReim
+from .models import Alternativa, Item, Usuario, Pertenece, Colegio, Nivel, Letra, Actividadxreim, Reim, Actividad, AsignaReim, Graficoxactividad, ObjetivoAprendizaje, ItemAlt
+from embed_report.services.pbiembedservice import PbiEmbedService
+
 # Create your views here.
 
 
 @login_required
 def home_view(request):
     logged_user = request.user
+    if(logged_user.username == 'admin'):
+        logout(request)
+        return redirect("../")
 
-    #Buscar otra opciones
     usuario = Usuario.objects.get(username=logged_user.username)
-
     pertenece = Pertenece.objects.filter(usuario_id = usuario.id)
 
     #En la siguiente operación se rellena un diccionario en donde se almacena los datos de colegios y sus cursos. Para evitar repeticiones de estos, se llena y compara una lista de los colegios que ya se han guardado
@@ -41,7 +47,8 @@ def home_view(request):
         if value_colegio.nombre in colegios:
             colegios[value_colegio.nombre].update(aux)
         else:
-            colegios[value_colegio.nombre] = aux                
+            colegios[value_colegio.nombre] = aux   
+
     context = { 
         'usuario': usuario,
         'colegios' : colegios,
@@ -49,20 +56,19 @@ def home_view(request):
     return render(request, 'pages/home.htm', context)
 
 
-
-
-
 @login_required
 def home_reim_view(request,fecha,usuario_id, id_colegio, id_nivel, id_letra):
     context = {}
     nombre_reims = []
-    Curso_elegido = Pertenece.objects.get(fecha = fecha,usuario_id= usuario_id , colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+    
 
+    Curso_elegido = Pertenece.objects.get(fecha = fecha,usuario_id= usuario_id , colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
     Nivel_elegido = Nivel.objects.get(id = Curso_elegido.nivel_id).nombre
     Letra_elegida = Letra.objects.get(id = Curso_elegido.letra_id).nombre
-    periodo = ""
+    nombre_curso = Nivel_elegido + " "+Letra_elegida
 
     #Incorporar Periodo
+    periodo = ""
     mes = int(fecha[5:7])
     if(mes > 0 and mes < 7):
         periodo = fecha[0:4]+"01"
@@ -70,12 +76,7 @@ def home_reim_view(request,fecha,usuario_id, id_colegio, id_nivel, id_letra):
         periodo = fecha[0:4]+"02"
 
     Reims = AsignaReim.objects.filter(periodo_id= periodo,colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
-    print(Reims)
-    print(fecha)
-    print(periodo)
-
     for i in Reims:
-        print("REIM: ",i.reim_id)
         nombre_reims.append(Reim.objects.get(id=i.reim_id))
 
     curso = {
@@ -84,30 +85,27 @@ def home_reim_view(request,fecha,usuario_id, id_colegio, id_nivel, id_letra):
         "fecha": fecha,
         "colegio": id_colegio,
     }
-    context['curso']=curso
+    
 
 
-    nombre_curso = Nivel_elegido + " "+Letra_elegida
     context['nombre_curso'] = nombre_curso
     context['curso']=curso
     context['Reim'] = nombre_reims
     return render(request, "pages/home_reim.htm",context)
 
 
-
 @login_required
 def lobby_view(request,fecha,reim_id, id_colegio, id_nivel, id_letra):
-    #Super bien con las ids pero el usuario necesita saber los nombres de estos reims y actividades
     context = {}
     nombre_actividad = []
-
+    actividades_con_preguntas = [40003,40010]
     reim = Reim.objects.get(id = reim_id)
-    context['reim_escogido'] = reim
+    
 
     actividad = Actividadxreim.objects.filter(id_reim=reim_id)
     for i in actividad:
         nombre_actividad.append(Actividad.objects.get(id = i.id_actividad.id))
-    context['actividad'] = nombre_actividad
+    
 
     curso = {
         "nivel": id_nivel,
@@ -115,8 +113,12 @@ def lobby_view(request,fecha,reim_id, id_colegio, id_nivel, id_letra):
         "fecha": fecha,
         "colegio": id_colegio,
     }
-    context['curso']=curso
+    
 
+    context['reim_escogido'] = reim
+    context['curso']=curso
+    context['actividades_permitidas'] = actividades_con_preguntas
+    context['actividad'] = nombre_actividad
     return render(request, "Reim1/reim_lobby.htm",context)
 
 @login_required
@@ -133,17 +135,142 @@ def actividad_view(request,fecha,actividad_id, id_colegio, id_nivel, id_letra):
         alumno = Usuario.objects.get(id = alumno_pertenece.usuario_id)
         alumnos.append(alumno)
         
-
-    obj = Actividad.objects.get(id = actividad_id)
-    context['object']=obj
+    actividad = Actividad.objects.get(id = actividad_id)
+    context['object']=actividad
     context['alumnos'] = alumnos
+
+    #Dando parametros a las funciones de JS
+    curso =[
+        {
+            'fecha' : fecha,
+            'colegio' : id_colegio,
+            'nivel': id_nivel,
+            'letra': id_letra
+        }
+    ]
+    context['data'] = json.dumps(curso)
+
+    #Cambiando el archivo config para acceder al reporte que se pide
+    nombre_reporte = f"{actividad.nombre}"
+    config = ConfigParser()
+    config.read('./embed_report/configs/config.ini')
+    
+    WORKSPACE_ID = config.get('power_bi_app','WORKSPACE_ID')
+    report_id=PbiEmbedService().get_report(WORKSPACE_ID,nombre_reporte)
+    config.set('power_bi_app','REPORT_ID',report_id)
+    with open(file='./embed_report/configs/config.ini',mode= 'w+') as f:
+        config.write(f)
+
     return render(request, "Reim1/actividad.htm",context)
 
+def get_embed_info(request):
+    '''Returns report embed configuration'''
+    try:
+        config = ConfigParser()
+        config.read('./embed_report/configs/config.ini')
+        
+        WORKSPACE_ID = config.get('power_bi_app','WORKSPACE_ID')
+        REPORT_ID = config.get('power_bi_app','REPORT_ID')
+        if(REPORT_ID != "Nada"):
+            embed_info = PbiEmbedService().get_embed_params_for_single_report(WORKSPACE_ID, REPORT_ID)
+            return HttpResponse(embed_info)
+        else:
+            return HttpResponse("No hay un grafico disponible")
+    except Exception as ex:
+        print("hola")
+        return json.dumps({'errorMsg': str(ex)}), 500
+#------ De momento esta queda deshabilitada --------------
+@login_required
+def resultados_generales_view(request,fecha,reim_id, id_colegio, id_nivel, id_letra):
+    context = {}
+    try:
+        grafico = Graficoxactividad.objects.get(id_actividad = reim_id).embedurl
+    except:
+        grafico = 0
+    # grafico_a_traer = 'GraficaActividad'+str(actividad_id)
+    # grafico = traer_reporte(grafico_a_traer)
+    context['grafico'] = grafico
+    
+    return render(request, "Reim1/g_generales.htm",context)
+
+
+
+#------ Inicio proceso "Creación de Preguntas y sus alternativas"--------
+def crearPreguntas_view(request,fecha,reim_id, id_colegio, id_nivel, id_letra):
+    context = {}
+    oa = ObjetivoAprendizaje.objects.all()
+    
+    context['oa'] = oa
+    context['nivel'] = id_nivel
+    return render(request, "pages/crearPregunta.htm",context)
+
+def crearAlternativas_view(request,fecha,reim_id, id_colegio, id_nivel, id_letra):
+    context = {}
+    pregunta = request.POST.get('txtpregunta')
+    alternativas = 0
+    oa = ObjetivoAprendizaje.objects.get(id = request.POST.get('oa'))
+    
+
+    #Pregunta
+    ultimo = Item.objects.latest('iditem')
+    p = Item(iditem = int(ultimo.iditem)+1,pregunta = pregunta, justificacion = request.POST.get('txtJustificacion'), reim_id = reim_id, objetivo_aprendizaje = oa)
+    p.save()
+
+
+    #Alternativa
+    if(id_nivel > 4):
+        alternativas = 3
+    else:
+        alternativas = 2
+    #Creando lista para que el template pueda iterar dentro con la cantidad de alternativas
+    lista = [*range(0,int(alternativas),1)]
+
+    context['pregunta']= pregunta
+    context['alternativas'] = lista
+    context['letra'] = id_letra
+    context['p']=p
+    return render(request, "pages/crearAlternativas.htm",context)
+
+#Esta view solo aparece si el usuario confirma la creación de la pregunta
+def confirmacion_view(request,fecha,reim_id, id_colegio, id_nivel, id_letra,id_item):
+    context = {}
+    p = Item.objects.get(iditem = id_item)
+    alternativas = request.POST.getlist('txtrespuesta')
+    escorrecta = request.POST.getlist('correcta')
+    url_a_redirigir = "../../"+id_letra
+
+    #Guardar alternativas
+    for i in alternativas:
+        ultima_alternativa = Alternativa.objects.latest('idlaternativa')
+        a = Alternativa(idlaternativa = int(ultima_alternativa.idlaternativa)+1, txt_alte = i)
+
+        ultima_relacion_itemalt = ItemAlt.objects.latest('indice')
+        r = ItemAlt(indice = int(ultima_relacion_itemalt.indice)+1,idlaternativa = a , escorrecto = escorrecta[alternativas.index(i)], item_iditem = p)
+
+        a.save()
+        r.save()
+
+
+
+    context['pregunta'] = p.pregunta
+    context['alternativas'] = alternativas
+    context['url_a_redirigir'] = url_a_redirigir
+    return render(request, "pages/confirmacion.htm",context)
+
+#-------------- Fin proceso "Creación de Preguntas y sus alternativas"--------
+
+
+#-------------------------------Alternativa--------------------
+def alternativa_view(request):
+    return render(request, "alternativa/resultados.htm")
+#------------------------------Fin Alternativa-----------------
 
 def ayuda_view(request,*args, **kwargs):
     return render(request, "pages/ayuda.htm",{})
 
 
+
+# ----- Proceso de Login y Logout-----------------------------
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data = request.POST)
@@ -186,3 +313,4 @@ def crearUsuario(username,password, user_id):
     user = User.objects.create_user(username,"",password)   
     user.save()
     
+# -----Fin proceso de Login y Logout-----------------------------

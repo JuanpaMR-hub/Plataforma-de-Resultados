@@ -1,0 +1,40 @@
+{% extends 'base.htm' %}
+{%  load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'alternativa/css/sidebar.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block title %}
+<title>Resultados</title>
+{% endblock %}
+
+{% block content %}
+<div class="sidenav">
+    <button class="dropdown-btn">Actividades 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container" id="Actividades">
+      <a href="#">Actividad 1</a>
+      <a href="#">Actividad 2</a>
+      <a href="#">Actividad 3</a>
+    </div>
+    <button class="dropdown-btn">OA 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="#">OA 1</a>
+      <a href="#">OA 2</a>
+      <a href="#">OA 3</a>
+    </div>
+  </div>
+  
+  <div class="main">
+    <h2>Nombre de la Actividad</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quod rerum ullam consectetur eum perspiciatis facere eos cupiditate vel, doloremque omnis suscipit ea nam iure expedita incidunt, aspernatur at fugit!</p>
+  </div>
+<script src="{% static 'alternativa/js/sidebar.js' %}">
+</script>
+{% endblock %}

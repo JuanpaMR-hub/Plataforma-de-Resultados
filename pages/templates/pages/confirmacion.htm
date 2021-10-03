@@ -1,0 +1,21 @@
+{% extends 'base.htm' %}
+
+{% block links %}
+<meta http-equiv="refresh" content="2; url = {{url_a_redirigir}}">
+{% endblock %}
+
+{% block title %}
+<title>Confirmación</title>
+{% endblock %}
+
+
+{% block content %}
+<h1 style="background-color: lightgreen;">La pregunta se ha creado y guardado con exito</h1>
+<p>{{pregunta}}</p>
+<ul>
+    {% for alternativa in alternativas %}
+    <li>{{alternativa}}</li>
+    {% endfor %}
+</ul>
+<p>Redirigiendo a Página de actividades...</p>
+{% endblock %}

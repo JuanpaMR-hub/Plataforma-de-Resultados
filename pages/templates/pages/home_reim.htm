@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="{% static 'inicio/css/home_reim.css' %}">
 {% endblock %}
 
+{% block title %}
+<title>Reims</title>
+{% endblock %}
 
 {% block content %}
 <main style="padding: 50px;">
@@ -19,6 +22,7 @@
             <div class="card-body">
               <h5 class="card-title">{{reims.nombre}}</h5>
               <p class="card-text">{{reims.descripcion_educativa}}</p>
+              
               <!-- Este form entrega la información al siguiente template.
                   Se necesita ingresar el id de cada uno de los reims en value
                   De esta manera la siguiente página sabrá cual Reim es y podrá filtrar las actividades -->

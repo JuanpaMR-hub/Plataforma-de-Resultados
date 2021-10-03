@@ -1,0 +1,34 @@
+{% extends 'base.htm' %}
+{% load static %}
+
+{% block title %}
+<title>Crear Pregunta</title>
+{% endblock %}
+
+{% block content %}
+
+<main>    
+    <form action="./alternativas" method="POST" name="pregunta">{%csrf_token%}
+        <div class="preguntas"> 
+            <h2>Esta es la sección de las preguntas</h2>
+            <label for="pregunta">Pregunta: </label>
+            <input  name="txtpregunta" type="text" required>
+            <br>
+            <label for="txtJustificacion">Justificación: </label>
+            <input id="txtJustificacion" name="txtJustificacion" type="text">
+            <br>
+            
+            <label for="oa">¿Cual es el Objetivo de Aprendizaje de esta actividad?</label>
+            <select name="oa" id="eleccion_oa">
+                {% for i in oa %}
+                <option value="{{i.id}}">{{i.nombre}}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Crear</button>
+    </form>
+    
+</main>
+{% endblock %}

@@ -1,0 +1,620 @@
+2021-08-08 21:22:33,503|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11003/1/1/1
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py", line 142, in actividad_view
+    grafico = traer_reporte(grafico_a_traer)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\usando_powerbi\use_power_bi.py", line 22, in traer_reporte
+    credentials='./usando_powerbi/configs/power_bi_state.jsonc'
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\powerbi\client.py", line 83, in __init__
+    self.power_bi_auth_client.login()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\powerbi\auth.py", line 236, in login
+    self.graph_session = PowerBiSession(client=self)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\powerbi\session.py", line 48, in __init__
+    format=log_format
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1917, in basicConfig
+    raise ValueError('Unrecognised argument(s): %s' % keys)
+ValueError: Unrecognised argument(s): encoding
+2021-08-08 21:22:57,993|autoreload.py|C:\Users\metal\AppData\Local\Programs\Python\Python37\Lib\site-packages\powerbi\session.py changed, reloading.
+2021-08-08 21:23:06,642|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-08 21:23:09,020|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11003/1/1/{'id':
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: "{'id':"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py", line 132, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got "{'id':".
+2021-08-08 21:23:42,823|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-08 21:23:45,645|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11003/1/1/{'id':
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: "{'id':"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py", line 132, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got "{'id':".
+2021-08-08 21:29:56,646|autoreload.py|C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py changed, reloading.
+2021-08-08 21:30:09,339|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-08 21:30:11,872|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11003/1/1/{'id':
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: "{'id':"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py", line 138, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got "{'id':".
+2021-08-08 21:31:09,583|autoreload.py|C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py changed, reloading.
+2021-08-08 21:35:53,936|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-08 21:35:56,469|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11003/1/1/{'id':
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: "{'id':"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py", line 140, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got "{'id':".
+2021-08-08 21:37:38,559|autoreload.py|C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py changed, reloading.
+2021-08-08 21:38:47,720|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-08 21:38:50,203|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11003/1/1/{'id':
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: "{'id':"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py", line 141, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got "{'id':".
+2021-08-08 21:39:21,891|autoreload.py|C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py changed, reloading.
+2021-08-08 21:39:38,151|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-08 21:39:40,794|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11003/1/1/{'id':
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: "{'id':"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py", line 137, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got "{'id':".
+2021-08-08 21:41:03,139|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-08 21:44:23,806|log.py|Internal Server Error: /reims/2021-06-12 00:00:00/1/1/1/...
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: '...'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py", line 63, in home_reim_view
+    Curso_elegido = Pertenece.objects.get(fecha = fecha,usuario_id= usuario_id , colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 424, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got '...'.
+2021-08-08 21:44:27,967|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11003/1/1/1
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\pages\views.py", line 151, in actividad_view
+    grafico = traer_reporte(grafico_a_traer)
+TypeError: traer_reporte() takes 0 positional arguments but 1 was given
+2021-08-08 21:44:40,236|autoreload.py|C:\Users\metal\Desktop\Estudios\Python\Django\resultados_reim\usando_powerbi\use_power_bi.py changed, reloading.
+2021-08-08 21:44:47,888|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-09 15:57:29,041|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-09 16:02:55,108|session.py|URL: https://api.powerbi.com/v1.0/myorg/dashboards
+2021-08-09 16:05:35,933|session.py|URL: https://api.powerbi.com/v1.0/myorg/dashboards
+2021-08-09 16:08:05,698|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-10 10:33:12,162|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-11 12:09:25,548|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-11 22:08:06,208|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-18 15:59:51,310|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-18 16:24:26,453|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-18 16:25:25,174|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-18 16:27:27,228|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-31 13:54:47,183|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-31 13:59:49,601|session.py|URL: https://api.powerbi.com/v1.0/myorg/dashboards
+2021-08-31 14:02:46,861|session.py|URL: https://api.powerbi.com/v1.0/myorg/dashboards
+2021-08-31 14:03:42,630|session.py|URL: https://api.powerbi.com/v1.0/myorg/dashboards
+2021-08-31 15:02:14,340|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-31 15:11:24,721|log.py|Not Found: /favicon.ico
+2021-08-31 15:11:38,043|log.py|Internal Server Error: /reims/2021-06-12 00:00:00/1/1/1/...
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: '...'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py", line 61, in home_reim_view
+    Curso_elegido = Pertenece.objects.get(fecha = fecha,usuario_id= usuario_id , colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 424, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got '...'.
+2021-08-31 15:13:18,753|autoreload.py|C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\usando_powerbi\use_power_bi.py changed, reloading.
+2021-08-31 15:46:28,236|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-08-31 17:02:56,072|log.py|Not Found: /favicon.ico
+2021-09-01 18:52:55,040|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11006/1/1/1
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py", line 156, in actividad_view
+    context['grafico'] = grafico
+UnboundLocalError: local variable 'grafico' referenced before assignment
+2021-09-01 18:53:10,973|autoreload.py|C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py changed, reloading.
+2021-09-01 18:53:40,507|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11006/1/1/&filterPaneEnabled=false
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: '&filterPaneEnabled=false'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py", line 134, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got '&filterPaneEnabled=false'.
+2021-09-01 18:55:06,752|autoreload.py|C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\usando_powerbi\use_power_bi.py changed, reloading.
+2021-09-01 22:10:35,264|autoreload.py|C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\usando_powerbi\use_power_bi.py changed, reloading.
+2021-09-01 22:10:50,021|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-01 22:11:04,988|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-01 22:14:12,653|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11006/1/1/&filterPaneEnabled=false
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: '&filterPaneEnabled=false'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py", line 134, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got '&filterPaneEnabled=false'.
+2021-09-01 22:14:36,675|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11006/1/1/frameborder="0"
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'frameborder="0"'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py", line 134, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got 'frameborder="0"'.
+2021-09-01 22:15:22,997|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11006/1/1/frameborder="0"
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'frameborder="0"'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py", line 134, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got 'frameborder="0"'.
+2021-09-01 22:15:36,078|autoreload.py|C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py changed, reloading.
+2021-09-01 22:16:06,768|log.py|Internal Server Error: /actividad/2021-06-12 00:00:00/11006/1/1/frameborder="0"
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'frameborder="0"'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py", line 134, in actividad_view
+    p = Pertenece.objects.filter(fecha__startswith = año, colegio_id = id_colegio, nivel_id = id_nivel, letra_id = id_letra)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1393, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1415, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1347, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\sql\query.py", line 1193, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\metal\AppData\Local\Programs\Python\Python37\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'id' expected a number but got 'frameborder="0"'.
+2021-09-01 22:16:43,830|autoreload.py|C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\usando_powerbi\use_power_bi.py changed, reloading.
+2021-09-07 11:29:35,511|autoreload.py|C:\Users\metal\Desktop\Universidad\Estudios\Python\Django\resultados_reim\pages\views.py changed, reloading.
+2021-09-07 12:59:47,650|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-07 12:59:50,814|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-07 17:49:55,545|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-07 20:48:09,647|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-07 20:52:03,479|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-12 18:03:20,677|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-21 19:33:46,375|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-21 19:34:31,160|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-21 19:35:41,443|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-21 19:36:29,888|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports
+2021-09-21 19:46:36,729|session.py|URL: https://api.powerbi.com/v1.0/myorg/reports

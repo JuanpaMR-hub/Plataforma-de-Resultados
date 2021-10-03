@@ -1,0 +1,30 @@
+{% extends 'base.htm' %}
+
+
+{% block content %}
+
+{% block title %}
+<title>Crear Alternativas</title>
+{% endblock %}
+
+<main>
+    <h1>{{pregunta}}</h1>
+    <form action="./{{p.iditem}}" method="POST">{% csrf_token %}
+  {% for alternativa in alternativas %}
+    <div>
+        <label for="respuesta">Respuesta: <label>
+        <input id="respuesta" name="txtrespuesta" type="text">
+        <br>
+        <label for="correcta">¿Esta es la respuesta correcta?</label>
+        <select name="correcta" id="correcta">
+            <option value=0>No</option>
+            <option value=1>Si</option>
+        </select>
+    </div>
+  {% endfor %}
+  <!-- Aqui hay que mandar un mensaje de confirmación con la pregunta y sus alternativas, una vez pulsado se redirige a la pagina de reim_lobby -->
+    <button type="submit" onclick="return confirm('¿Confirma la creación de la pregunta?');">Guardar Alternativas</button>
+    </form>
+</main>
+
+{% endblock %}

@@ -5,14 +5,32 @@
 <link rel="stylesheet" href="{% static 'Reim1/css/reim1.css' %}">
 {% endblock %}
 
+{% block title %}
+<title>Actividades</title>
+{% endblock %}
 
 {% block content %}
 
 <h1>{{ reim_escogido.nombre }}</h1>
 
 <div class="container-fluid">
-    <!-- Al igual que el Template anterior, se necesita crear un for loop que traiga todas las actividades
-        relacionadas con el REIM -->
+    <!-- Crear graficos generales -->
+    <!-- <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <img class="" src="http://via.placeholder.com/300x180" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Gráficos Generales</h4>
+                        <a class="btn-primary btn-lg" href="../../../../../actividad/{{curso.fecha}}/{{actividades.id}}/{{curso.colegio}}/{{curso.nivel}}/{{curso.letra}}">Ver los Gráficos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- For Loop con las actividades asociadas al reim -->
     {% for actividades in actividad %}
         <div class="row">
             <div class="col-12 mt-3">
@@ -24,6 +42,10 @@
                         <div class="card-body">
                             <h4 class="card-title">{{actividades.nombre}}</h4>
                             <p class="card-text">Esta es la actividad {{actividades.nombre}}, aqui tendría que ir una descripción hablandonos sobre la actividad y cuales son sus objetivos de aprendizajes</p>
+                            
+                            {% if actividades.id in actividades_permitidas %}
+                            <a class="btn-primary btn-lg" href="{{curso.letra}}/preguntas">Crear preguntas de esta actividad</a>    
+                            {% endif %}
                             <a class="btn-primary btn-lg" href="../../../../../actividad/{{curso.fecha}}/{{actividades.id}}/{{curso.colegio}}/{{curso.nivel}}/{{curso.letra}}">Ir a la Actividad</a>
 
                             <!-- <a href="../actividad/{{actividades.id}}"><button class="btn btn-primary">Ir a la Actividad</button></a> -->

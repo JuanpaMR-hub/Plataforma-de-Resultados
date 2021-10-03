@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import path,include
-from pages.views import home_view, home_reim_view, login_view, logout_view,actividad_view,ayuda_view,lobby_view
+from pages.views import home_view, home_reim_view, login_view, logout_view,actividad_view,ayuda_view,lobby_view, crearPreguntas_view, crearAlternativas_view, confirmacion_view, alternativa_view, get_embed_info
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,11 @@ urlpatterns = [
     path('reims/<fecha>/<usuario_id>/<id_colegio>/<id_nivel>/<id_letra>',home_reim_view , name='home_reim'),
     path('reim_lobby/<fecha>/<reim_id>/<id_colegio>/<id_nivel>/<id_letra>', lobby_view , name='lobby'),
     path('actividad/<fecha>/<actividad_id>/<id_colegio>/<id_nivel>/<id_letra>', actividad_view, name="actividad"),
+    path('reim_lobby/<fecha>/<reim_id>/<id_colegio>/<id_nivel>/<id_letra>/preguntas/', crearPreguntas_view, name="crearPregunta"),
+    path('reim_lobby/<fecha>/<reim_id>/<id_colegio>/<id_nivel>/<id_letra>/preguntas/alternativas', crearAlternativas_view, name="alternativas"),
+    path('reim_lobby/<fecha>/<reim_id>/<id_colegio>/<id_nivel>/<id_letra>/preguntas/<id_item>', confirmacion_view, name="confirmacion"),
+    path('resultados/', alternativa_view, name="resultados"),
+    path('getembedinfo/', get_embed_info),
     path('ayuda/', ayuda_view, name="ayuda"),
     path('login/', login_view, name= "login"),
     url(r'^logout/$', logout_view, name= "logout"),

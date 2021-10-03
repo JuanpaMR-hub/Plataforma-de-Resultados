@@ -7,6 +7,9 @@
   color: initial;
 }
 
+.card{
+  position: static;
+}
 .card-horizontal {
   display: flex;
   flex: 1 1 auto;
