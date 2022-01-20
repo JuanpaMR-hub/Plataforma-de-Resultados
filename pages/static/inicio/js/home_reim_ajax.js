@@ -12,30 +12,39 @@ function crearCarta(actividades,curso,reimId,reimnombre){
              <img class= "imagen-carta" src="/static/iconos/`+reimnombre+`/`+id+`.png">
             </div>
             <div class="card-body">
-              <h5 class="card-title">`+nombre+`</h5>
-              <a id="curso" data-id ="`+id+`" onclick = 'guardarId("`+nombre+`",`+ id +`,`+ reimId+`)' href="../../../../../resultados/`+reimId+`">Ver Resultados</a>
-              <a  id= "revisionDibujo`+id+`" href="../../../../../revisionDibujo/`+id+`">Revisar Dibujos</a>
-              <a  id= "evaluacionPropuesta`+id+`" href="../../../../../evaluacionPropuesta">Evaluacion Propuesta</a>
+                <div class="card-title">
+                    <h5 class="card-title">`+nombre+`</h5>
+                </div>
+                <div class="card-functions">
+                    <a id="curso" data-id ="`+id+`" onclick = 'guardarId("`+nombre+`",`+ id +`,`+ reimId+`)' href="../../../../../resultados/`+reimId+`">Ver Resultados</a>
+                    <div class="dropdown" id="`+id+`dropdown"></div>
+                    `
+                    if(actividades_con_dibujos.includes(id)){
+                       
+                    };
+                    `                    
+                </div>
             </div>
-          </div>
+        </div>
         ` 
         container.appendChild(myDiv);
-        boton_revisar = document.getElementById("revisionDibujo"+id);
-        if(actividades_con_dibujos.includes(id)){
-            boton_revisar.style.visibility = 'visible';
-        }else{
-            boton_revisar.style.visibility = 'hidden';
-        }
 
-        boton_evaluacion = document.getElementById("evaluacionPropuesta"+id);
+        if(actividades_con_dibujos.includes(id)||actividades_con_propuestas.includes(id)){
+            funciones = document.getElementById(id+"dropdown");
+            funciones.innerHTML =`
+            <button class="masFunciones"><i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content" id="`+id+`dropdown-content"></div>
+                `
+        }
+        
+        insertarfunciones = document.getElementById(id+"dropdown-content")
+        if(actividades_con_dibujos.includes(id)){
+            insertarfunciones.innerHTML +=`<a  id= "revisionDibujo`+id+`" href="../../../../../revisionDibujo/`+id+`">Revisar Dibujos</a>`
+        }
         if(actividades_con_propuestas.includes(id)){
-            boton_evaluacion.style.visibility = 'visible';
-        }else{
-            boton_evaluacion.style.visibility = 'hidden';
+            insertarfunciones.innerHTML +=`<a  id= "evaluacionPropuesta`+id+`" href="../../../../../evaluacionPropuesta">Evaluacion Propuesta</a>`
         }
     }
-
-    
 }
 
 function removerCartas(){

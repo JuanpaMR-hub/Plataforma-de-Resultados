@@ -81,8 +81,8 @@ $(function () {
                         <a onclick="prueba('`+dibujo+`')"><img id="dibujo-modal" style="height:auto; width:100%;" src="data:image/jpeg;base64, ` + dibujo + `" alt="dibujo"></a>       
                         </div>
                         <div class="card-body">
-                        <button class= "btn btn-success btn-large" onclick="respuestaDocente(`+id+`,1)" >Aprobar</button>
-                        <button class= "btn btn-danger btn-large" onclick="justificar(`+id+`)">No Aprobar</button>
+                        <button class= "btn btn-success btn-large" onclick="respuestaDocente(`+id+`,1)" data-tootip="tooltip" title="Aprobar" ><i class="fas fa-check"></i></button>
+                        <button class= "btn btn-danger btn-large" onclick="justificar(`+id+`)" data-tootip="tooltip" title="No Aprobar"><i class="fas fa-ban"></i></button>
                         </div>
                     </div>
                     ` 

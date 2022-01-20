@@ -4,10 +4,10 @@
 
 {% block links %}
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="{% static 'revisionDibujo/js/ajax.js' %}"></script>
+<script src="{% static 'funciones/revisionDibujo/js/ajax.js' %}"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="{% static 'revisionDibujo/css/revisionDibujo.css' %}">
-<link rel="stylesheet" href="{% static 'alternativa/css/loader.css' %}">
+<link rel="stylesheet" href="{% static 'funciones/revisionDibujo/css/revisionDibujo.css' %}">
+<link rel="stylesheet" href="{% static 'resultados/css/loader.css' %}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -16,7 +16,7 @@
 
 
 {% block volver %}
-<a style = "color:white;" href="../../../../../reims/{{curso.fecha}}/{{usuario.id}}/{{curso.colegio}}/{{curso.nivel}}/{{curso.letra}}">Volver</a>
+<a style = "color:white;" href="../reims">Volver</a>
 {% endblock %}
 {% block user %}
 <a class="userIcon" href="#" style = "pointer-events: none;"><i class="far fa-user" style="font-size: 150%;"></i><span style="padding-left: 20px;">{{usuario.username}}</span></a>

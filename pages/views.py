@@ -66,7 +66,8 @@ def home_view(request):
         'colegios' : colegios,
         'iniciales': iniciales
      }
-    print("Estos son los colegios del usuario: ",len(colegios))
+    #Si se encuentra mas de 1 colegio vinculado al docente, se redirige a la página para escoger el colegio
+    #En cambio, si no encuentra, se redirige a una pagina para escoger el curso
     if(len(colegios) == 1):
         return render(request, 'pages/home-cursos.htm',context)
     return render(request, 'pages/home.htm', context)
@@ -184,7 +185,7 @@ def alternativa_view(request,reim_id):
     context['jsoncurso'] = json.dumps(curso)
     context['curso'] = curso
     context['usuario'] = usuario
-    return render(request, "alternativa/resultados.htm", context)
+    return render(request, "resultados/resultados.htm", context)
 
 def contenido_view(request):
     data = {}
@@ -241,7 +242,7 @@ def crearPreguntas_view(request):
     
     context['oa'] = oa
     context['nivel'] = nivel
-    return render(request, "pages/crearPregunta.htm",context)
+    return render(request, "funciones/crearPreguntas/crearPregunta.htm",context)
 
 def crearAlternativas_view(request,reim_id):
     context = {}
@@ -272,7 +273,7 @@ def crearAlternativas_view(request,reim_id):
     context['alternativas'] = lista
     context['letra'] = id_letra
     context['p']=p
-    return render(request, "pages/crearAlternativas.htm",context)
+    return render(request, "funciones/crearPreguntas/crearAlternativas.htm",context)
 
 #Esta view solo aparece si el usuario confirma la creación de la pregunta
 def confirmacion_view(request,fecha,reim_id, id_colegio, id_nivel, id_letra,id_item):
@@ -298,7 +299,7 @@ def confirmacion_view(request,fecha,reim_id, id_colegio, id_nivel, id_letra,id_i
     context['pregunta'] = p.pregunta
     context['alternativas'] = alternativas
     context['url_a_redirigir'] = url_a_redirigir
-    return render(request, "pages/confirmacion.htm",context)
+    return render(request, "funciones/crearPreguntas/confirmacion.htm",context)
 
 #-------------- Fin proceso "Creación de Preguntas y sus alternativas"--------
 
@@ -337,7 +338,7 @@ def revisar_dibujo_view(request,actividad_id):
     context['actividad'] = actividad
     context['curso'] = curso
     context['usuario'] = usuario
-    return render(request, 'revisionDibujo/revision_dibujo.htm',context)
+    return render(request, 'funciones/revisionDibujo/revision_dibujo.htm',context)
 
 
 def traer_dibujos(request):
