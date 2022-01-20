@@ -8,7 +8,7 @@ config.add_section('power_bi_app')
 config.set('power_bi_app','AUTHENTICATION_MODE','ServicePrincipal')
 
 # Workspace Id in which the report is present
-config.set('power_bi_app','WORKSPACE_ID','819e773c-b0ef-4c18-a9ac-34861fef270c')
+config.set('power_bi_app','WORKSPACE_ID','5ceffdb6-2905-4224-ac8a-3a256499dec2')
 
 # Report Id for which Embed token needs to be generated
 config.set('power_bi_app','REPORT_ID','f0ccaaf3-9cfc-4dcc-acca-d101345c692c')

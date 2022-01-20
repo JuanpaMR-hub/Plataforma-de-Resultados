@@ -29,11 +29,11 @@ class PbiEmbedService:
 
         for i in response_api['value']:
             if(i.get("name") == nombre_reporte):
-                    report_id_from_api = i.get("id")
+                report_id_from_api = i.get("id")
         if(report_id_from_api != ""):
             return (report_id_from_api)
         else:
-            return("Nada")
+            return("No se ha encontrado el id")
 
     def get_embed_params_for_single_report(self, workspace_id, report_id, additional_dataset_id=None):
         '''Get embed params for a report and a workspace

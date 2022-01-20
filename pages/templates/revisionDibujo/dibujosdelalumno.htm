@@ -1,0 +1,21 @@
+<table>
+    {% for alumno,imagenes in dibujosxalumno.items %}
+    {% for imagen in imagenes %}
+    <tr>
+        <th>
+            <img style="height: 60px; width: 80px;" src="data:image/jpeg;base64, {{ imagen }}" alt="dibujo">
+            <a href="#">Ver Imagen</a>
+        </th>
+        <th>
+            <select name="Aprobacion" id="">
+                <option value="1">Apruebo</option>
+                <option value="0">No apruebo</option>
+            </select>
+        </th>
+        <th>
+            <button>Guardar</button>
+        </th>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+</table>

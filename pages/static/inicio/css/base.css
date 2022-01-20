@@ -14,6 +14,7 @@
     text-align: center;
     background-color: white;
     color: white;
+    position: relative;
   }
   #topPart{
     background-color: #004b93;
@@ -31,6 +32,18 @@
     height: 1px;
   }
 
+  .logoutButton{
+    background-color: #004b93 ;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 3;
+  }
+
+
   /* Increase the font size of the heading */
   header h1 {
     font-size: 40px;
@@ -43,6 +56,7 @@
     position: sticky;
     position: -webkit-sticky;
     top: 0;
+    z-index: 1;
   }
   
   /* Style the navigation bar links */
@@ -77,9 +91,15 @@
     /* position: absolute; */
     bottom: 0;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 1px;
     /* Set the fixed height of the footer here */
-    height: 600px;
+    height: 500px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .footer_container{
+    text-align: center;
   }
   
   /* Taller footer on small screens */
@@ -95,30 +115,11 @@
   /* Sticky footer style and color
   -------------------------------------------------- */
   footer {
-    padding-top: 10px;
+    padding-top: 1px;
     background-color: #e4e4e6;
     color: black;
   }
   
-  footer a {
-    color: black;
-    text-decoration:none;
-  }
-  
-  footer a:hover, footer a:focus {
-    color: #aaa;
-    text-decoration:none;
-    /* border-bottom:1px dotted #999; */
-  }
-  
-  /* footer .form-control {
-      background-color: #b7b7b9;
-      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
-      border: none;
-      resize: none;
-      color: #d1d2d2;
-      padding: 0.7em 1em;
-  } */
   
   
   /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */

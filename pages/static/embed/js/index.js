@@ -4,6 +4,23 @@
 //     alumno = document.querySelector("#alumnos_list")
 //     alumno_elegido = alumno.options[alumno.selectedIndex].value;
 //     return alumno_elegido;
+            // Triggers when a report schema is successfully loaded
+            // report.on("loaded", function () {
+                
+            //     report.getFilters()
+            //     .then(function(filters) {
+                    
+            //         var allFilters = getFilters();
+
+            //         filters.push(allFilters);
+                    
+            //         if (allFilters != null) return report.setFilters(allFilters);
+            //     }).catch (function (error) {
+            //         console.log(error.message);
+            //     });
+            //     console.log("Report load successful")
+            // });
+
 // }
 
 
@@ -31,7 +48,7 @@ function getFilters () {
     return allFilters;
     }
 
-$(function () {
+function embed() {   
     var reportContainer = $("#report-container").get(0);
     var models = window["powerbi-client"].models;
     var reportLoadConfig = {
@@ -41,8 +58,8 @@ $(function () {
         // Enable this setting to remove gray shoulders from embedded report
         settings: {
             background: models.BackgroundType.Transparent,
-            filterPaneEnabled : false,
-            navContentPaneEnabled: false
+            filterPaneEnabled : true,
+            navContentPaneEnabled: true
         }
 
     };
@@ -114,4 +131,4 @@ $(function () {
             errorContainer.html(errMessageHtml);
         }
     });
-});
+};

@@ -103,7 +103,7 @@ class Actividadxreim(models.Model):
 
 class Alternativa(models.Model):
     idlaternativa = models.IntegerField(primary_key=True)
-    txt_alte = models.CharField(max_length=225, db_collation='utf8_unicode_ci')
+    txt_alte = models.CharField(max_length=225)
     imagen_idimagen = models.ForeignKey('Imagen', models.DO_NOTHING, db_column='IMAGEN_idimagen', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -369,6 +369,8 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
+
+
 class Eje(models.Model):
     id_eje = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=45)
@@ -385,6 +387,19 @@ class Elemento(models.Model):
         managed = False
         db_table = 'elemento'
 
+class EvaluacionPropuesta(models.Model):
+    id_elemento = models.OneToOneField(Elemento, models.DO_NOTHING, db_column='id_elemento')
+    id_usuario = models.ForeignKey('Usuario',models.DO_NOTHING, db_column='id_usuario',related_name='evaluacion_idAlumno')
+    fecha_creacion = models.DateTimeField(primary_key=True)
+    id_docente = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='id_docente',related_name='evaluacion_idDocente')
+    fecha_evaluacion = models.DateTimeField(blank=True, null=True)
+    evaluacion = models.CharField(max_length=255, blank=True, null=True)
+    propuesta = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'evaluacion_propuesta'
+        unique_together = (('id_elemento', 'id_usuario', 'id_docente', 'fecha_creacion'),)
 
 class Forma(models.Model):
     sesion = models.CharField(max_length=45)
@@ -427,7 +442,7 @@ class InventarioReim(models.Model):
 
 class Item(models.Model):
     iditem = models.IntegerField(db_column='IdItem', primary_key=True)  # Field name made lowercase.
-    pregunta = models.CharField(db_column='Pregunta', max_length=255, db_collation='utf8_unicode_ci')  # Field name made lowercase.
+    pregunta = models.CharField(db_column='Pregunta', max_length=255)  # Field name made lowercase.
     justificacion = models.CharField(db_column='Justificacion', max_length=255, blank=True, null=True)  # Field name made lowercase.
     dificultad = models.IntegerField(db_column='Dificultad', blank=True, null=True)  # Field name made lowercase.
     imagen_idimagen = models.ForeignKey(Imagen, models.DO_NOTHING, db_column='IMAGEN_idimagen', blank=True, null=True)  # Field name made lowercase.

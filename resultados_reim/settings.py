@@ -26,7 +26,7 @@ SECRET_KEY = '^%j+dn1$$o&cx&nj14b2#h)#3fu3+cc7n%41r=bucekzve=adq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_auto_logout.middleware.auto_logout',
 ]
 
 ROOT_URLCONF = 'resultados_reim.urls'
@@ -139,3 +140,11 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 LOGIN_URL = "/login/"
+
+from datetime import timedelta
+
+# AUTO_LOGOUT = {
+#     'IDLE_TIME': timedelta(seconds=10),
+#     'SESSION_TIME': timedelta(minutes=30),
+#     'MESSAGE': 'The session has expired. Please login again to continue.',
+# }

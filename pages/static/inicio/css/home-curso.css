@@ -1,0 +1,36 @@
+main{
+    height: 100vh;
+    padding: 1px 0px;
+    background-image: url('../imagenes/home_background.jpg');
+    background-position: top;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }  
+h1{
+    margin: 20px;
+    text-decoration: underline;
+    align-self: center;
+}
+.cursos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boton-curso{
+    font-size: 20px;
+    height: fit-content;
+    width: 30%;
+    color: gold;
+    background-color: #004b93;
+    padding: 10px;
+    margin: 10px 10px 10px 0px;
+    text-align: center;
+  }
+  .boton-curso:hover{
+    color: darkgoldenrod;
+    text-decoration: none;
+  }

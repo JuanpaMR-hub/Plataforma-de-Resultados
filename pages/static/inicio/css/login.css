@@ -2,25 +2,39 @@ h1{
     text-align: center;
 }
 
-
+#logoimg{
+    height: 36%;
+    width: 36%;
+}
 main{
     padding-top: 50px;
     background-image: url('../imagenes/login_background.jpg');
-    height: 500px;
+    background-size: cover;
+    background-position: center;
+    height: 82vh;
 
 }
 .contenedor{
     background-color: rgba(255,255,255, 0.9);
     box-sizing: border-box;
-    margin: 0px 700px 10px 450px;
+    margin-left: 5%;
     padding-top: 30px;
-    height: 450px;
-    width: 450px;
+    height: 90%;
+    width: 40%;
     border-radius: 50px;
+    box-shadow: 10px 10px 5px gray;
+}
 
+.contenedor h1{
+    font-size: 150%;
 }
 
 .formulario{
     display: flex;
     justify-content: center;
+}
+
+.formulario button{
+    background-color: #004b93;
+    align-self: center;
 }

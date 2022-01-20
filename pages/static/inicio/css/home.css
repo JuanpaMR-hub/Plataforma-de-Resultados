@@ -1,98 +1,68 @@
-  /* Column container */
-  .row {  
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-  }
-  
-  /* Create two unequal columns that sits next to each other */
-  /* Sidebar/left column */
-  aside {
-    -ms-flex: 20px; /* IE10 */
-    flex: 20px;
-    background-color: #f1f1f1;
-    padding: 20px;
-  }
-  
-  /* Main column */
-  main {   
-    -ms-flex: 70%; /* IE10 */
-    flex: 70%;
-    background-color: white;
-    padding: 20px;
-  }
-  /* Fake image, just for this example */
-  .fakeimg {
-    background-color: red;
-    width: 100%;
-    padding: 20px;
-  }
-  .fakeimg-user {
-    border: turquoise 5px solid;
-    width: 150px;
-    padding: 20px;
-    margin-left: 20px;
-    border-radius: 80%;
-  }
-
-  .lista_cursos{
-    display: flex;
-    justify-content: space-around;
-
-  }
-  .lista_cursos li{
-    list-style-type: none;
-    flex: 0 1 auto;
-    align-self: auto;
-    width: 200px;
-    border: 4px solid black;
-    padding: 18px 50px;
-    margin: 30px;
-    color: red;;
-  }
+main{
+  height: 100vh;
+  padding: 1px 0px;
+  background-image: url('../imagenes/home_background.jpg');
+  background-position: top;
+  background-size: cover;
+}
 
 
-  .accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-  }
-  
-  .active, .accordion:hover {
-    background-color: #ccc;
-  }
-  
-  .accordion:after {
-    content: '\002B';
-    color: #777;
-    font-weight: bold;
-    float: right;
-    margin-left: 5px;
-  }
-  
-  .active:after {
-    content: "\2212";
-  }
-  
-  .panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-  }
+.contenedor-colegio{
+  height: 27vh;
+  width: 70%;
+  background-color: #004b93;
+  margin: 2% 15%;
+  display: flex;
+  flex-direction: row;
+  border: solid black 1px;
+}
+.contenedor-imagen{
+  height: 100%;
+  width: 25%;
+}
+.contenedor-info{
+  height: 100%;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+.contenedor-nombre{
+  height: 25%;
+  width: 100%;
+  background-color: white;
+  border-style: none none solid none;
+  border-color: black ;
+  border-width: 1px;
+}
+.nombre-colegio{
+  font-size: 4vh;
+  display: table;
+  margin: 0 auto;
+}
+.contenedor-cursos{
+  height: 75%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.boton-curso{
+  height: fit-content;
+  width: 180px;
+  color: gold;
+  background-color: #004b93;
+  padding: 10px;
+  margin: 10px 0px;
+  text-align: center;
+}
+.boton-curso:hover{
+  color: darkgoldenrod;
+  text-decoration: none;
+}
 
-  a {
-    margin-top: 10px;
-  }
-  a.btn {border-radius: .25rem; border: 1px solid transparent; padding: .5rem 1rem; color: #fff; }
-  a.btn:hover { border-radius: .25rem; }
+
+
+
+ 
   

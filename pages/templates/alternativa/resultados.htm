@@ -3,38 +3,51 @@
 
 {% block links %}
 <link rel="stylesheet" href="{% static 'alternativa/css/sidebar.css' %}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'alternativa/css/loader.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'alternativa/js/sidebar.js' %}"></script>
 {% endblock %}
 
 {% block title %}
 <title>Resultados</title>
 {% endblock %}
 
+{% block volver %}
+<a href="../reims/">Volver</a>
+{% endblock %}
+
+{% block user %}
+<a class="userIcon" href="#" style = "pointer-events: none;"><i class="far fa-user" style="font-size: 150%;"></i><span style="padding-left: 20px;">{{usuario.username}}</span></a>
+{% endblock %}
+
 {% block content %}
-<div class="sidenav">
-    <button class="dropdown-btn">Actividades 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-container" id="Actividades">
-      <a href="#">Actividad 1</a>
-      <a href="#">Actividad 2</a>
-      <a href="#">Actividad 3</a>
-    </div>
-    <button class="dropdown-btn">OA 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-container">
-      <a href="#">OA 1</a>
-      <a href="#">OA 2</a>
-      <a href="#">OA 3</a>
+<div class="sidebar" id="actividades">
+  {% static "" as baseURL %}
+  {% for actividad in actividades %}
+    <a href="#{{actividad.nombre}}" data-tootip="tooltip" title="{{actividad.nombre}}" data-idActividad="{{actividad.id}}" alt="{{actividad.nombre}}"><img class="iconoActividad" src="{{baseURL}}iconos/{{nombre_reim}}/{{actividad.id}}.png" alt="{{actividad.nombre}}"></a>
+  {% endfor %}
+</div>
+
+<div class="content">
+  <h2 id="nombre_reim">{{nombre_reim}}</h2>
+  <h3>Actividad: <span id="nombre_actividad"></span>  <a href="#Info" onclick="informacion_modal()"><img src="{% static 'inicio/imagenes/info-circle.svg' %}" alt=""></a></h3>
+  <p id="jsonData" hidden data-json = "{{jsoncurso}}" >{{curso}}</p>
+  <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" id="modal-body">
+        ...
+      </div>
     </div>
   </div>
-  
-  <div class="main">
-    <h2>Nombre de la Actividad</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quod rerum ullam consectetur eum perspiciatis facere eos cupiditate vel, doloremque omnis suscipit ea nam iure expedita incidunt, aspernatur at fugit!</p>
+
+  <div class="contenedor-grafico">
+    <span class="loader" id= "loader"><span class="loader-inner"></span></span>
+    <section id="report-container" class="embed-container">
+    </section>
   </div>
-<script src="{% static 'alternativa/js/sidebar.js' %}">
-</script>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/powerbi-client/2.15.1/powerbi.min.js" integrity="sha512-OWIl8Xrlo8yQjWN5LcMz5SIgNnzcJqeelChqPMIeQGnEFJ4m1fWWn668AEXBrKlsuVbvDebTUJGLRCtRCCiFkg==" crossorigin="anonymous"></script>
 {% endblock %}

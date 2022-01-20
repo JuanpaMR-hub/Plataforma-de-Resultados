@@ -3,33 +3,38 @@
 
 {% block links %}
 <link rel="stylesheet" href="{% static 'inicio/css/home_reim.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'inicio/js/home_reim_ajax.js' %}"></script>
 {% endblock %}
 
 {% block title %}
 <title>Reims</title>
 {% endblock %}
+{% block user %}
+<a class="userIcon" href="#" style = "pointer-events: none;"><i class="far fa-user" style="font-size: 150%;"></i><span style="padding-left: 20px;">{{usuario.username}}</span></a>
+{% endblock %}
 
 {% block content %}
-<main style="padding: 50px;">
-  <h1 style="padding-bottom: 50px;">{{nombre_curso}}</h1>
-  <div class="card-deck">
+<main>
+  <div class="sidebar" id="sidebar">
+    {% static "" as baseURL %}
     {% for reims in Reim %}
-      <!-- > Aqui en adelante se deben mostrar con un for loop con los REIMS relacionados al colegio y al docente 
-          > Se pueden traer los datos en la parte de views
-          > De momento están ingresadas de manera bruta, al igual que el "id" de cada una de ellas -->
-          <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{reims.nombre}}</h5>
-              <p class="card-text">{{reims.descripcion_educativa}}</p>
-              
-              <!-- Este form entrega la información al siguiente template.
-                  Se necesita ingresar el id de cada uno de los reims en value
-                  De esta manera la siguiente página sabrá cual Reim es y podrá filtrar las actividades -->
-                  <a class="btn-primary btn-lg" href="../../../../../reim_lobby/{{curso.fecha}}/{{reims.id}}/{{curso.colegio}}/{{curso.nivel}}/{{curso.letra}}">Ir a Reim</a>            
-                </div>
-          </div>
+    <!-- href="../../../../../resultados/{{curso.fecha}}/{{reims.id}}/{{curso.colegio}}/{{curso.nivel}}/{{curso.letra}}" -->
+      <a data-toogle="tooltip" title="{{reims.nombre}}" href="#{{reims.nombre}}"><img class= "imagenIcono" src="{{baseURL}}iconos/{{reims.nombre}}/{{reims.id}}.png" alt="IconoREIM"></a>
     {% endfor %}
   </div>
+  <div class="content">
+    <div class="nombreReim">
+      <img id="iconoREIM" src="#"><span id="nombre_reim"><i class="fas fa-arrow-left"></i>Elija un REIM</span>
+      <span id="curso" hidden data-curso = "{{curso}}"></span>
+    </div>
+    <div class="actividades">
+    </div>
+  </div>
 </main>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+ });
+</script>
 {% endblock %}

@@ -7,23 +7,31 @@
 {% block title %}
 <title>Inicio</title>
 {% endblock %}
+
+
+{% block user %}
+<a href="#" style = "pointer-events: none;"><i class="far fa-user" style="font-size: 150%;"></i><span style="padding-left: 20px;">{{usuario.username}}</span></a>
+{% endblock %}
+
+
 {% block content %}
-<div class="row">
-    <main>
-        <h1>Hola {{usuario.username}}!</h1>
-        <h4>Mis Colegios</h4>
-        {% for nombre,colegio in colegios.items %}
-            <button class="accordion">{{nombre}}</button>
-            <div class="panel">
-                    <div class="btn-group-horizontal w-75">
-                        {% for curso in colegio.values  %}
-                            <a class="btn btn-primary btn-lg" href="../reims/{{curso.fecha}}/{{usuario.id}}/{{curso.colegio.1}}/{{curso.nivel.1}}/{{curso.letra.1}}">{{curso.nivel.0|add:" "|add:curso.letra.0}}</a>
-                            
-                        {% endfor %}
-                    </div>
+<main>
+    {% for nombre,colegio in colegios.items %}
+    <div class="contenedor-colegio">
+        <div class="contenedor-imagen">
+        </div>
+        <div class="contenedor-info">
+            <div class="contenedor-nombre">
+                <span class="nombre-colegio">{{nombre}}</span>
             </div>
-        {% endfor %}
-        </main>
-</div>
-  <script src="{% static 'inicio/js/acordion.js' %}"></script>
+            <div class="contenedor-cursos">  
+                {% for curso in colegio.values %}
+                <a class="boton-curso" href="../reims">{{curso.nivel.0|add:" "|add:curso.letra.0}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        
+    </div>    
+    {% endfor %}
+</main>
 {% endblock %}

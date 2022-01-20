@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block links %}{% endblock %}
+    <script src="https://kit.fontawesome.com/d4704f2f81.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'inicio/css/base.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% block links %}{% endblock %}
+    
+    
     {% block title %}
     {% endblock %}
 
@@ -19,30 +22,28 @@
   </div>
   <!-- Logo -->
     <div id="Logo">
-      <img src="{% static 'inicio/imagenes/Logo.png' %}" alt="Logo de Ulearnet"> 
+      <a href="{% url 'home' %}"><img src="{% static 'inicio/imagenes/Logo.png' %}" alt="Logo de Ulearnet" style="height: 13vh;"> </a>
     </div>
 </header>
   
   <nav>
-    <a href="{% url 'ayuda' %}">Ayuda</a>
+    {% block user %}{% endblock %}
+    {% block volver %}{% endblock %}
+    <a href="{% url 'ayuda' %}" hidden>Ayuda</a>
     <form class="right" action="{% url 'logout' %}" method="post">
       {% csrf_token %}
-      <button type="submit" class="btn btn-primary btn-lg">Logout</button>
+      <button type="submit" class="logoutButton">Cerrar Sesion</button>
     </form>
   </nav>
   {% block content %}
   {% endblock %}
   <footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <h5><i class="fa fa-road"></i> <img src="{% static 'inicio/imagenes/logo_ulearnet_footer.png' %}" alt="Logo de Ulearnet"> </h5>
-                <p><strong>Programa de Gestión de la Calidad y Seguimiento de los Aprendizajes</strong></p>
-                <p>Dirección de Extensión y Comunicaciones </p>
-                <p>Facultad de Filosofía y Humanidades</p>
-                <p>Universidad de Chile</p>
-            </div>
-        </div>
+    <div class="footer_container">
+      <h5><img src="{% static 'inicio/imagenes/logo_ulearnet_footer.png' %}" alt="Logo de Ulearnet"> </h5>
+      <p><strong>Programa de Gestión de la Calidad y Seguimiento de los Aprendizajes</strong></p>
+      <p>Dirección de Extensión y Comunicaciones </p>
+      <p>Facultad de Filosofía y Humanidades</p>
+      <p>Universidad de Chile</p>
     </div>
 </footer>
 </body>

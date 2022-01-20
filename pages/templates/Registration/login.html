@@ -11,22 +11,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Login</title>
 </head>
-<body>
+<body>  
     
 <header>
   <!-- Logo -->
     <div id="Logo">
-      <img src="{% static 'inicio/imagenes/Logo.png' %}" alt="Logo de Ulearnet"> 
+      <img  id = "logoimg" src="{% static 'inicio/imagenes/Logo.png' %}" alt="Logo de Ulearnet"> 
     </div>
 </header>
 <main>
+
     <div class="contenedor"> 
         <h1>Accede a la Plataforma</h1>
         <div class="formulario">
             <form method="post" action = "{% url 'login' %}" class="form-group">
                 {% csrf_token %}
                 {{form|crispy}}
-                <button type="submit" class="btn btn-success">Login</button>
+                <br>
+                <button type="submit" class="btn btn-primary">Acceder</button>
             </form>
         </div>
     </div>

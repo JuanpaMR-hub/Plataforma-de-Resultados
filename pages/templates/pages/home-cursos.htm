@@ -1,0 +1,33 @@
+{% extends 'base.htm' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'inicio/css/home-curso.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'inicio/js/home_ajax.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+<title>Inicio</title>
+{% endblock %}
+
+
+{% block user %}
+<a href="#" style = "pointer-events: none;"><i class="far fa-user" style="font-size: 150%;"></i><span style="padding-left: 20px;">{{usuario.username}}</span></a>
+{% endblock %}
+
+{% block content %}
+<main>
+    {% for nombre,colegio in colegios.items %}
+        <div class="nombreColegio">
+            <h1>{{nombre}}</h1>
+        </div>
+        <div class="cursos">
+            {% for curso in colegio.values %}
+                <button id= "curso_elegido" onclick="curso_elegido('{{curso.colegio.1}}','{{curso.nivel.1}}','{{curso.letra.1}}','{{curso.fecha}}')"  class="boton-curso" >{{curso.nivel.0|add:" "|add:curso.letra.0}}</button>
+            {% endfor %}
+        </div>
+        
+    {% endfor %}
+</main>
+{% endblock %}
